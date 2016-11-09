@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+  <head>
+    <title>t-option-selector demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes"/>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html"/>
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html"/>
+
+    <link rel="import" href="../t-option-selector.html"/>
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+  </head>
+  <body>
+
+    <h3>Basic t-option-selector Demo</h3>
+    <template is="dom-bind" id="domBindTemplate">
+      <t-option-selector 
+        id="selector"
+        label-key="fullName"
+        options-label="Passenger"
+        value-key="id"
+        default-text="to prefill info from profile"
+        post-selection-text="as passenger"
+        add-new-text="passenger details to profile"
+        add-new-label="Add New"
+        add-new-value="5">
+      </t-option-selector>
+    </template>
+    <script>
+    window.addEventListener('WebComponentsReady', function(e) {
+      var templatizer = document.getElementById('domBindTemplate');
+      templatizer.$.selector.optionsList = [{
+                "id": "0",
+                "fullName": "Mr John Smith",
+                "personalDetails": {
+                    "name": {
+                        "title": "Mr",
+                        "firstName": "John",
+                        "middleName": "",
+                        "lastName": "Smith",
+                        "suffix": "",
+                        "prefix": null
+                    },
+                    "dateOfBirth": {
+                        "date": "Wed, 02 Feb, 2000",
+                        "time": "4:22 PM",
+                        "systemDateTime": "2000-02-02T16:22:00Z"
+                    },
+                    "gender": "Male",
+                    "email": "so@ms.com",
+                    "phone": "9199191919"
+                },
+                "passport": {
+                    "id": null,
+                    "passportNumber": null,
+                    "issuingCountry": null,
+                    "name": null,
+                    "issueDate": null,
+                    "expiryDate": null,
+                    "nationalityCountry": null
+                },
+                "memberships": [{
+                  "id": "1",
+                  "code": "12312",
+                  "productType": "Flight",
+                  "type": "",
+                  "providerName": "Sun Country",
+                  "providerCode": "SY"
+              }, {
+                  "id": "3",
+                  "code": "199191919",
+                  "productType": "Flight",
+                  "type": "",
+                  "providerName": "Jet Airways",
+                  "providerCode": "9W"
+              }, {
+                  "id": "4",
+                  "code": "123123",
+                  "productType": "Car",
+                  "type": "promotional",
+                  "providerName": "CarTrawler",
+                  "providerCode": "CW"
+              }, {
+                  "id": "5",
+                  "code": "123121",
+                  "productType": "Car",
+                  "type": "corporate",
+                  "providerName": "CarTrawler",
+                  "providerCode": "CW"
+              }, {
+                  "id": "6",
+                  "code": "111111",
+                  "productType": "Car",
+                  "type": "promotional",
+                  "providerName": "Advantage",
+                  "providerCode": "AD"
+              }, {
+                  "id": "7",
+                  "code": "111111",
+                  "productType": "Car",
+                  "type": "corporate",
+                  "providerName": "Advantage",
+                  "providerCode": "AD"
+              }]
+      
+            }, {
+                "id": "1",
+                "fullName": "Mr Some Namesa",
+                "personalDetails": {
+                    "name": {
+                        "title": "Mr",
+                        "firstName": "Some",
+                        "middleName": "",
+                        "lastName": "Namesa",
+                        "suffix": "",
+                        "prefix": null
+                    },
+                    "dateOfBirth": {
+                        "date": "Wed, 02 Feb, 2000",
+                        "time": "4:22 PM",
+                        "systemDateTime": "2000-02-02T16:22:00Z"
+                    },
+                    "gender": "Male",
+                    "email": "so@ms.com",
+                    "phone": "9199191919"
+                },
+                "passport": {
+                    "id": null,
+                    "passportNumber": null,
+                    "issuingCountry": null,
+                    "name": null,
+                    "issueDate": null,
+                    "expiryDate": null,
+                    "nationalityCountry": null
+                },
+                "memberships": []
+            }, {
+                "id": "2",
+                "fullName": "Mr Somsasa sasasa",
+                "personalDetails": {
+                    "name": {
+                        "title": "Mr",
+                        "firstName": "Somsasa",
+                        "middleName": "",
+                        "lastName": "sasasa",
+                        "suffix": "mskm",
+                        "prefix": null
+                    },
+                    "dateOfBirth": {
+                        "date": "Wed, 10 May, 2006",
+                        "time": "4:26 PM",
+                        "systemDateTime": "2006-05-10T16:26:00Z"
+                    },
+                    "gender": "Male",
+                    "email": "assa@sasa.csa",
+                    "phone": "9199191919"
+                },
+                "passport": {
+                    "id": null,
+                    "passportNumber": null,
+                    "issuingCountry": null,
+                    "name": null,
+                    "issueDate": null,
+                    "expiryDate": null,
+                    "nationalityCountry": null
+                },
+                "memberships": []
+            }]
+    });
+    </script>
+  </body>
+</html>

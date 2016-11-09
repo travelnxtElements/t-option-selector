@@ -1,0 +1,16 @@
+{
+  "name": "t-option-selector",
+  "description": "Contains a drop-down, list and couple of texts to be populated along with drop-down. Once option is selected, event is raised containing selected option",
+  "main": "t-option-selector.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#^1.2.1",
+    "t-dropdown": "atomelements/t-dropdown#^2.0.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  }
+}
