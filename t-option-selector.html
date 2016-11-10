@@ -7,37 +7,33 @@
 <dom-module id="t-option-selector">
   <template>
     <style include="iron-flex"></style>
-    <style>
+    <style include="travel-element-styles">
       :host {
-        width: 100%;
         display: block;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-      }
-
-      .vertical-margin {
-        margin-bottom: 15px;
-      }
-
-      .section {
-        padding: var(--normal-spacing,10px);
+        font-family: var(--primary-font-family, 'Open Sans');
       }
 
       #selectoption {
-        width: 30%;
-        min-width: 90px;
+        max-width:40%;
+        margin-right: 5px;
       }
-
-      .options-text {
-        width: 60%;
-        padding-top: 5px;
-      }
+        #selectoption ::content label,
+        #selectoption ::content select {
+            font-size: 12px;
+            color: var(--default-primary-color,#0099cc);
+        }
+        #selectoption ::content .unfocused-line ,
+        #selectoption ::content .arrow {
+            display:none;
+        }
+        #selectoption ::content label {
+            font-size: 12px;
+        }
 
 
     </style>
-    <div class="section">
-      <div class="vertical-margin layout horizontal start">
+    <div class="section-small">
+      <div class="layout horizontal center start">
         <t-dropdown
           id="selectoption"
           class="options"
@@ -47,12 +43,13 @@
           value-key="[[valueKey]]"
           error-message="Select title"
           selected-item="{{_selectedOptionValue}}"
-          dropdown-array="[[_optionsList]]">
+          dropdown-array="[[_optionsList]]"
+          on-dropdown-array-changed="_setFirstOption">
         </t-dropdown>
-        <div class="flex options-text">
-          <label id="defaultText">[[defaultText]]</label>
-          <label id="postSelectionText" hidden>[[postSelectionText]]</label>
-          <label id="addNewText" hidden>[[addNewText]]</label>
+        <div class="flex font-12 font-semi secondary-text">
+          <div id="defaultText">[[defaultText]]</div>
+          <div id="postSelectionText" hidden>[[postSelectionText]]</div>
+          <div id="addNewText" hidden>[[addNewText]]</div>
         </div>
       </div>
     </div>
@@ -72,12 +69,6 @@
         optionsLabel: {
           type: String,
           value: 'Option',
-        },
-
-        optionsList: {
-          type: Array,
-          value: [],
-          observer: '_onOptionsListChange'
         },
 
         _optionsList: {
@@ -118,7 +109,7 @@
 
         addNewText: {
           type: String,
-          value: 'option'
+          value: 'Choose option'
         },
 
         addNewLabel: {
@@ -131,10 +122,25 @@
           value: ''
         },
 
+        context: Object,
+
+        optionsList: {
+            type: Array,
+            value: [],
+            observer: '_onOptionsListChange'
+        },
+
         _textIdList: {
           type: String,
           value: ['defaultText', 'postSelectionText', 'addNewText']
         }
+      },
+
+      _setFirstOption: function () {
+          setTimeout(function () {
+              var select = this.$.selectoption.querySelector('select');
+              select.options[0].text = this.optionsLabel;
+          }.bind(this),100)
       },
 
       _onOptionsListChange: function(newValue, oldValue) {
@@ -144,10 +150,15 @@
         if (oldValue && oldValue.length) {
           return;
         }
+        if (newValue[newValue.length - 1].isAddNew) {
+          this._optionsList = this.optionsList;
+          return;
+        }
 
         var newObj = {}
         newObj[this.labelKey] = this.addNewLabel;
         newObj[this.valueKey] = this.addNewValue;
+        newObj["isAddNew"] = true;
         newValue.push(newObj);
 
         this._optionsList = this.optionsList;
@@ -168,10 +179,10 @@
           });
 
           if (selectedOption && selectedOption.length) {
-            this.fire('selection-changed', selectedOption[0]);
+            this.fire('selection-changed', { 'selectedOption': selectedOption[0], 'context': this.context });
             return;
           }
-          this.fire('selection-changed', null);
+          this.fire('selection-changed', { 'selectedOption': null, 'context': this.context });
         }
       },
 

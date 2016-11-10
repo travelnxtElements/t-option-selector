@@ -25,7 +25,7 @@
       <t-option-selector 
         id="selector"
         label-key="fullName"
-        options-label="Passenger"
+        options-label="Choose Passenger"
         value-key="id"
         default-text="to prefill info from profile"
         post-selection-text="as passenger"
@@ -37,7 +37,8 @@
     <script>
     window.addEventListener('WebComponentsReady', function(e) {
       var templatizer = document.getElementById('domBindTemplate');
-      templatizer.$.selector.optionsList = [{
+      templatizer.$.selector.optionsList = 
+            [{
                 "id": "0",
                 "fullName": "Mr John Smith",
                 "personalDetails": {
@@ -68,49 +69,48 @@
                     "nationalityCountry": null
                 },
                 "memberships": [{
-                  "id": "1",
-                  "code": "12312",
-                  "productType": "Flight",
-                  "type": "",
-                  "providerName": "Sun Country",
-                  "providerCode": "SY"
-              }, {
-                  "id": "3",
-                  "code": "199191919",
-                  "productType": "Flight",
-                  "type": "",
-                  "providerName": "Jet Airways",
-                  "providerCode": "9W"
-              }, {
-                  "id": "4",
-                  "code": "123123",
-                  "productType": "Car",
-                  "type": "promotional",
-                  "providerName": "CarTrawler",
-                  "providerCode": "CW"
-              }, {
-                  "id": "5",
-                  "code": "123121",
-                  "productType": "Car",
-                  "type": "corporate",
-                  "providerName": "CarTrawler",
-                  "providerCode": "CW"
-              }, {
-                  "id": "6",
-                  "code": "111111",
-                  "productType": "Car",
-                  "type": "promotional",
-                  "providerName": "Advantage",
-                  "providerCode": "AD"
-              }, {
-                  "id": "7",
-                  "code": "111111",
-                  "productType": "Car",
-                  "type": "corporate",
-                  "providerName": "Advantage",
-                  "providerCode": "AD"
-              }]
-      
+                    "id": "1",
+                    "code": "12312",
+                    "productType": "Flight",
+                    "type": "",
+                    "providerName": "Sun Country",
+                    "providerCode": "SY"
+                  }, {
+                    "id": "3",
+                    "code": "199191919",
+                    "productType": "Flight",
+                    "type": "",
+                    "providerName": "Jet Airways",
+                    "providerCode": "9W"
+                  }, {
+                    "id": "4",
+                    "code": "123123",
+                    "productType": "Car",
+                    "type": "promotional",
+                    "providerName": "CarTrawler",
+                    "providerCode": "CW"
+                  }, {
+                    "id": "5",
+                    "code": "123121",
+                    "productType": "Car",
+                    "type": "corporate",
+                    "providerName": "CarTrawler",
+                    "providerCode": "CW"
+                  }, {
+                    "id": "6",
+                    "code": "111111",
+                    "productType": "Car",
+                    "type": "promotional",
+                    "providerName": "Advantage",
+                    "providerCode": "AD"
+                  }, {
+                    "id": "7",
+                    "code": "111111",
+                    "productType": "Car",
+                    "type": "corporate",
+                    "providerName": "Advantage",
+                    "providerCode": "AD"
+                }]
             }, {
                 "id": "1",
                 "fullName": "Mr Some Namesa",
@@ -173,7 +173,7 @@
                     "nationalityCountry": null
                 },
                 "memberships": []
-            }]
+            }];
     });
     </script>
   </body>
