@@ -1,5 +1,9 @@
 {
   "name": "t-option-selector",
+  "version": "0.0.0",
+  "authors": [
+    "Ganesh Ratnaparkhi <ganeshr43@gmail.com>"
+  ],
   "description": "Contains a drop-down, list and couple of texts to be populated along with drop-down. Once option is selected, event is raised containing selected option",
   "main": "t-option-selector.html",
   "dependencies": {
